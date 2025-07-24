@@ -1,7 +1,6 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
-const { OpenAI } = require('openai');
+const OpenAI = require('openai');
 require('dotenv').config();
 
 const app = express();
@@ -45,6 +44,10 @@ Crea una metáfora motivacional única en español, máxima 20 palabras, emocion
   }
 });
 
-app.listen(port, () => {
-  console.log(`AIRA Backend corriendo en http://localhost:${port}`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`AIRA Backend corriendo en http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
